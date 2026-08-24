@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bbf Onyx | Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #05050a;
+      --bg-card: #0c0c14;
+      --bg-card-hover: #12121c;
+      --purple: #8b5cf6;
+      --purple-light: #a78bfa;
+      --purple-dark: #6d28d9;
+      --text: #ffffff;
+      --text-muted: #a1a1aa;
+      --border: rgba(255, 255, 255, 0.08);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 3rem;
+      background: rgba(5, 5, 10, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .logo span {
+      color: var(--purple);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--purple);
+      border-radius: 2px;
+    }
+
+    .btn-cv {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .btn-cv:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      gap: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 60%;
+      height: 80%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 560px;
+      z-index: 2;
+    }
+
+    .badge-hello {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: var(--purple-light);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 420px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      color: white;
+      padding: 0.85rem 1.6rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(139, 92, 246, 0.45);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.85rem 1.6rem;
+      border-radius: 12px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .socials {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .socials a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      color: var(--text-muted);
+    }
+
+    .socials a:hover {
+      border-color: var(--purple);
+      color: var(--purple-light);
+      background: rgba(139, 92, 246, 0.1);
+    }
+
+    .hero-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .portrait-wrapper {
+      position: relative;
+      width: 420px;
+      height: 520px;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .portrait-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .code-badge {
+      position: absolute;
+      top: 30px;
+      right: -20px;
+      width: 56px;
+      height: 56px;
+      background: rgba(20, 20, 30, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--purple-light);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .available-badge {
+      position: absolute;
+      bottom: 40px;
+      right: -10px;
+      background: rgba(12, 12, 20, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.7rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .available-badge .dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #22c55e;
+    }
+
+    /* ========== TECH STACK ========== */
+    .tech-stack {
+      padding: 1.5rem 3rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(10, 10, 16, 0.6);
+    }
+
+    .tech-inner {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tech-label {
+      font-weight: 600;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      color: var(--text-muted);
+    }
+
+    .tech-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .tech-badge:hover {
+      border-color: rgba(139, 92, 246, 0.4);
+      color: var(--text);
+    }
+
+    .tech-badge img,
+    .tech-badge .icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ========== FEATURED PROJECTS ========== */
+    .projects {
+      padding: 5rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+    }
+
+    .btn-view-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid var(--border);
+      padding: 0.55rem 1.1rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .btn-view-all:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      color: var(--text);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all 0.25s;
+    }
+
+    .project-card:hover {
+      border-color: rgba(139, 92, 246, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-img {
+      height: 180px;
+      background: #111;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .project-body {
+      padding: 1.4rem;
+    }
+
+    .project-body h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-body p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .project-techs {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .project-techs span {
+      font-size: 0.75rem;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.25rem 0.55rem;
+      border-radius: 6px;
+      color: var(--text-muted);
+    }
+
+    .project-link {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .project-link:hover {
+      border-color: var(--purple);
+      color: var(--purple-light);
+    }
+
+    /* ========== ABOUT ========== */
+    .about {
+      padding: 5rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-label {
+      color: var(--purple-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .about h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.3rem;
+    }
+
+    .about h2 span {
+      color: var(--purple-light);
+    }
+
+    .about p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .btn-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.2rem;
+      border: 1px solid var(--border);
+      padding: 0.7rem 1.3rem;
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+
+    .btn-more:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      transition: all 0.2s;
+    }
+
+    .stat-card:hover {
+      border-color: rgba(139, 92, 246, 0.3);
+    }
+
+    .stat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .stat-icon.purple { background: rgba(139, 92, 246, 0.15); color: var(--purple-light); }
+    .stat-icon.gold { background: rgba(234, 179, 8, 0.15); color: #eab308; }
+    .stat-icon.green { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+    .stat-icon.red { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ========== CTA ========== */
+    .cta {
+      padding: 4rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(109, 40, 217, 0.08));
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .cta h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .cta p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      color: white;
+      padding: 0.9rem 1.7rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
+      transition: all 0.2s;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(139, 92, 246, 0.45);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.8rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .footer-logo span {
+      color: var(--purple);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 7rem;
+      }
+      .hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-btns, .socials {
+        justify-content: center;
+      }
+      .portrait-wrapper {
+        width: 340px;
+        height: 420px;
+      }
+      .project-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .about {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem 1.5rem;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero, .projects, .about, .tech-stack, .cta, footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+      .cta {
+        flex-direction: column;
+        text-align: center;
+      }
+      footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      .footer-left {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#" class="logo">Bbf-Onyx<span>&lt;/&gt;</span></a>
+    <ul class="nav-links">
+      <li><a href="./Index.html" class="active">Home</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./skill.html">Skills</a></li>
+      <li><a href="./Project.html">Projects</a></li>
+       <li><a href="./contact.html">Contact</a></li>
+    </ul>
+    <a href="./cv.html" class="btn-cv">
+      Download CV
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+      </svg>
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="badge-hello">👋 Hello, I'm</div>
+      <h1><span>Onyx</span></h1>
+      <div class="title">Software Engineer.</div>
+      <p>I build fast, scalable and beautiful web experiences that turn ideas into real products.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">
+          View My Work
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="./contact.html" class="btn-secondary">
+          Contact Me
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </a>
+      </div>
+      <div class="socials">
+        Find me on
+        <a href="#" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+          <a href="https://www.instagram.com/bbfonyx?igsi=aXNtZGpsY3hxa211" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2m-.3 2C5.3 4 4 5.3 4 7.5v9c0 2.2 1.3 3.5 3.5 3.5h9c2.2 0 3.5-1.3 3.5-3.5v-9c0-2.2-1.3-3.5-3.5-3.5h-9m9.6 1.5a1.5 1.5 0 0 1 0 3 1.5 1.5 0 0 1 0-3m-5.1 1.5c2.5 0 4.5 2 4.5 4.5s-2 4.5-4.5 4.5-4.5-2-4.5-4.5 2-4.5 4.5-4.5m0 2a2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 0 0-5z"/>
+    </svg>
+  </a>
+       <a href="https://www.tiktok.com/@bbf.onyx3?_r=1&_t=ZS-999uwclhoOb" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.68v12.7a2.85 2.85 0 1 1-5.92-2.86c.44-.46 1.06-.75 1.75-.75V9.02a6 6 0 1 0 10.86 4.43v-5.02a8.05 8.05 0 0 0 4.76-2.74v-3.72z"/>
+    </svg>
+  </a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <div class="portrait-wrapper">
+        <!-- Replace with your actual portrait image -->
+       <img src="/images/profile/file_000000001d5481f48abd2b800c358a2a.png" alt="Bbf Onyx">
+        <div class="code-badge">&lt;/&gt;</div>
+        <div class="available-badge">
+          <span class="dot"></span>
+          Available for<br>Freelance & Internships
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section class="tech-stack" id="skills">
+    <div class="tech-inner">
+      <div class="tech-label">Tech Stack</div>
+      <div class="tech-badges">
+        <div class="tech-badge">
+          <span style="color:#3776AB">●</span> Python
+        </div>
+        <div class="tech-badge">
+          <span style="color:#092E20">●</span> Django
+        </div>
+        <div class="tech-badge">
+          <span style="color:#F7DF1E">●</span> JavaScript
+        </div>
+        <div class="tech-badge">
+          <span style="color:#3178C6">●</span> TypeScript
+        </div>
+        <div class="tech-badge">
+          <span style="color:#61DAFB">●</span> React
+        </div>
+        <div class="tech-badge">
+          <span style="color:#E34F26">●</span> HTML5
+        </div>
+        <div class="tech-badge">
+          <span style="color:#1572B6">●</span> CSS3
+        </div>
+        <div class="tech-badge">
+          <span style="color:#F05032">●</span> Git
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="section-header">
+      <h2>Featured Projects</h2>
+      <a href="#" class="btn-view-all">
+        View All Projects
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="project-grid">
+      <!-- Project 1 -->
+      <article class="project-card">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop" alt="TaskFlow">
+          <span class="project-tag">FULL STACK</span>
+        </div>
+        <div class="project-body">
+          <h3>TaskFlow</h3>
+          <p>A full-stack productivity app for teams to manage tasks, projects and progress.</p>
+          <div class="project-footer">
+            <div class="project-techs">
+              <span>Django</span>
+              <span>React</span>
+              <span>PostgreSQL</span>
+            </div>
+            <a href="#" class="project-link" aria-label="View project">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=300&fit=crop" alt="SneakVerse">
+          <span class="project-tag">WEB APP</span>
+        </div>
+        <div class="project-body">
+          <h3>SneakVerse</h3>
+          <p>Modern e-commerce platform for sneaker collections and drops.</p>
+          <div class="project-footer">
+            <div class="project-techs">
+              <span>Next.js</span>
+              <span>TypeScript</span>
+              <span>Stripe</span>
+            </div>
+            <a href="#" class="project-link" aria-label="View project">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop" alt="FinTrack API">
+          <span class="project-tag">API</span>
+        </div>
+        <div class="project-body">
+          <h3>FinTrack API</h3>
+          <p>RESTful API for personal finance tracking and analytics.</p>
+          <div class="project-footer">
+            <div class="project-techs">
+              <span>Python</span>
+              <span>Django REST</span>
+              <span>PostgreSQL</span>
+            </div>
+            <a href="#" class="project-link" aria-label="View project">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-content">
+      <div class="about-label">ABOUT ME</div>
+      <h2>I code with purpose and<br>build with <span>passion</span>.</h2>
+      <p>I'm a 17-year-old Software Engineering student who loves solving real-world problems with code. I specialize in building web applications that are performant, scalable and user-focused.</p>
+      <p>When I'm not coding, I'm gaming, reading, or exploring new tech. I believe in continuous growth and shipping things that make impact.</p>
+      <a href="#" class="btn-more">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+        More About Me
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon purple">&lt;/&gt;</div>
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon gold">🏆</div>
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Technologies</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green">◉</div>
+        <div class="stat-number">250+</div>
+        <div class="stat-label">GitHub Contributions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon red">🚀</div>
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Dedication</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div>
+      <h2>Let's build something amazing together</h2>
+      <p>Have a project in mind or just want to say hi? My inbox is always open.</p>
+    </div>
+    <a href="mailto:bbfonyx@onyx.com" class="btn-cta">
+      Get In Touch
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      <div class="footer-logo">Bbf-Onyx<span>&lt;/&gt;</span></div>
+      <span>© 2026 Onyx. All rights reserved.</span>
+    </div>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="theme-toggle" title="Toggle theme">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </div>
+  </footer>
+
+</body>
+</html>
