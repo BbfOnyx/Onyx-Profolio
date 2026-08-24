@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills | Onyx</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #05050a;
+      --bg-card: #0c0c14;
+      --bg-card-hover: #12121c;
+      --purple: #8b5cf6;
+      --purple-light: #a78bfa;
+      --purple-dark: #6d28d9;
+      --text: #ffffff;
+      --text-muted: #a1a1aa;
+      --border: rgba(255, 255, 255, 0.08);
+      --radius: 16px;
+      --radius-sm: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 3rem;
+      background: rgba(5, 5, 10, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .logo span {
+      color: var(--purple);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--purple);
+      border-radius: 2px;
+    }
+
+    .btn-cv {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .btn-cv:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ========== HERO ========== */
+    .skills-hero {
+      min-height: 70vh;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      align-items: center;
+      padding: 8rem 3rem 3rem;
+      gap: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skills-hero::before {
+      content: '';
+      position: absolute;
+      top: -15%;
+      right: -8%;
+      width: 60%;
+      height: 90%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.28) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 520px;
+      z-index: 2;
+    }
+
+    .section-label {
+      color: var(--purple-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content h1 {
+      font-size: 3.6rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero-content h1 span {
+      background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-content > p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 440px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      color: white;
+      padding: 0.85rem 1.6rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(139, 92, 246, 0.45);
+    }
+
+    .connect-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-right: 0.3rem;
+    }
+
+    .socials {
+      display: flex;
+      gap: 0.7rem;
+    }
+
+    .socials a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      color: var(--text-muted);
+    }
+
+    .socials a:hover {
+      border-color: var(--purple);
+      color: var(--purple-light);
+      background: rgba(139, 92, 246, 0.1);
+    }
+
+    /* Laptop visual */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .laptop-wrapper {
+      position: relative;
+      width: 520px;
+    }
+
+    .laptop-wrapper img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .floating-badge {
+      position: absolute;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(20, 20, 30, 0.9);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .floating-badge.code { top: 5%; left: 8%; color: var(--purple-light); animation-delay: 0s; }
+    .floating-badge.react { top: 12%; right: 5%; color: #61dafb; animation-delay: 0.5s; }
+    .floating-badge.python { top: 42%; left: -5%; color: #3776ab; animation-delay: 1s; }
+    .floating-badge.js { bottom: 22%; right: 8%; color: #f7df1e; animation-delay: 1.5s; }
+    .floating-badge.ts { bottom: 8%; right: -2%; color: #3178c6; animation-delay: 2s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* ========== SECTION COMMON ========== */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 3rem 3.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--purple);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--purple);
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .btn-view {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.1rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .btn-view:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      color: var(--text);
+    }
+
+    /* ========== TECHNICAL SKILLS ========== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.3rem;
+      transition: all 0.25s;
+    }
+
+    .skill-card:hover {
+      border-color: rgba(139, 92, 246, 0.35);
+      transform: translateY(-3px);
+    }
+
+    .skill-top {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+    }
+
+    .skill-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .skill-icon.html { background: #e34f26; color: white; }
+    .skill-icon.css { background: #1572b6; color: white; }
+    .skill-icon.js { background: #f7df1e; color: #111; }
+    .skill-icon.ts { background: #3178c6; color: white; }
+    .skill-icon.react { background: #20232a; color: #61dafb; }
+    .skill-icon.next { background: #000; color: white; border: 1px solid #333; }
+    .skill-icon.python { background: #3776ab; color: white; }
+    .skill-icon.django { background: #092e20; color: white; }
+
+    .skill-name {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+      border-radius: 4px;
+    }
+
+    .progress-pct {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: right;
+      margin-bottom: 0.7rem;
+    }
+
+    .skill-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* ========== TOOLS ========== */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 1rem;
+    }
+
+    .tool-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.3rem 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.7rem;
+      transition: all 0.25s;
+      text-align: center;
+    }
+
+    .tool-card:hover {
+      border-color: rgba(139, 92, 246, 0.35);
+      transform: translateY(-3px);
+    }
+
+    .tool-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .tool-name {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    /* ========== OTHER SKILLS ========== */
+    .other-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.2rem;
+    }
+
+    .other-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.2rem;
+      transition: all 0.25s;
+    }
+
+    .other-card:hover {
+      border-color: rgba(139, 92, 246, 0.35);
+      transform: translateY(-3px);
+    }
+
+    .other-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .other-icon.ui { background: rgba(139, 92, 246, 0.15); color: var(--purple-light); }
+    .other-icon.responsive { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+    .other-icon.problem { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+    .other-icon.version { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+    .other-icon.soft { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+
+    .other-title {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .other-list {
+      list-style: none;
+    }
+
+    .other-list li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding: 0.25rem 0;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .other-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--purple-light);
+    }
+
+    /* ========== CURRENTLY LEARNING ========== */
+    .learning-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .learning-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 0.65rem 1.1rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .learning-badge:hover {
+      border-color: rgba(139, 92, 246, 0.4);
+      color: var(--text);
+    }
+
+    .learning-badge .icon {
+      font-size: 1.1rem;
+    }
+
+    /* ========== CTA ========== */
+    .cta {
+      max-width: 1200px;
+      margin: 1rem auto 4rem;
+      padding: 0 3rem;
+    }
+
+    .cta-inner {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(109, 40, 217, 0.1));
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .cta-left {
+      display: flex;
+      align-items: center;
+      gap: 1.3rem;
+    }
+
+    .cta-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(139, 92, 246, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .cta h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .cta p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      color: white;
+      padding: 0.9rem 1.7rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
+      transition: all 0.2s;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(139, 92, 246, 0.45);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.6rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .footer-logo {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .footer-logo span {
+      color: var(--purple);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 0.7rem;
+    }
+
+    .footer-socials a {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .footer-socials a:hover {
+      border-color: var(--purple);
+      color: var(--purple-light);
+    }
+
+    .back-top {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .back-top:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1100px) {
+      .skills-hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 7rem;
+      }
+      .hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      .hero-content > p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .laptop-wrapper {
+        width: 420px;
+        margin: 0 auto;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .tools-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .other-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem 1.5rem;
+      }
+      .nav-links {
+        display: none;
+      }
+      .skills-hero, .section, .cta, footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      .hero-content h1 {
+        font-size: 2.6rem;
+      }
+      .skills-grid, .tools-grid, .other-grid {
+        grid-template-columns: 1fr;
+      }
+      .cta-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .cta-left {
+        flex-direction: column;
+      }
+      footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#" class="logo">Bbf-Onyx<span>&lt;/&gt;</span></a>
+    <ul class="nav-links">
+      <li><a href="./Index.html">Home</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./skill.html" class="active">Skills</a></li>
+      <li><a href="./Project.html">Projects</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+    </ul>
+    <a href="./cv.html" class="btn-cv">
+      Download CV
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+      </svg>
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="skills-hero">
+    <div class="hero-content">
+      <div class="section-label">MY SKILLS</div>
+      <h1>Tools that power<br>my <span>creativity</span></h1>
+      <p>I use a diverse set of technologies and tools to design, develop and deliver scalable, efficient and user-friendly solutions.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">
+          See My Projects
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <span class="connect-text">Let's Connect</span>
+        <div class="socials">
+          <a href="#" aria-label="GitHub">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+            <a href="https://www.instagram.com/bbfonyx?igsi=aXNtZGpsY3hxa211" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2m-.3 2C5.3 4 4 5.3 4 7.5v9c0 2.2 1.3 3.5 3.5 3.5h9c2.2 0 3.5-1.3 3.5-3.5v-9c0-2.2-1.3-3.5-3.5-3.5h-9m9.6 1.5a1.5 1.5 0 0 1 0 3 1.5 1.5 0 0 1 0-3m-5.1 1.5c2.5 0 4.5 2 4.5 4.5s-2 4.5-4.5 4.5-4.5-2-4.5-4.5 2-4.5 4.5-4.5m0 2a2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 0 0-5z"/>
+    </svg>
+  </a>
+       <a href="https://www.tiktok.com/@bbf.onyx3?_r=1&_t=ZS-999uwclhoOb" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.68v12.7a2.85 2.85 0 1 1-5.92-2.86c.44-.46 1.06-.75 1.75-.75V9.02a6 6 0 1 0 10.86 4.43v-5.02a8.05 8.05 0 0 0 4.76-2.74v-3.72z"/>
+    </svg>
+  </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="laptop-wrapper">
+        <!-- Replace with your laptop/code screenshot -->
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=700&h=450&fit=crop" alt="Laptop with code">
+        <div class="floating-badge code">&lt;/&gt;</div>
+        <div class="floating-badge react">⚛</div>
+        <div class="floating-badge python">🐍</div>
+        <div class="floating-badge js">JS</div>
+        <div class="floating-badge ts">TS</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL SKILLS -->
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <div class="section-title-wrap">
+          <span class="dot"></span>
+          <h2 class="section-title">Technical Skills</h2>
+        </div>
+        <p class="section-subtitle">— Technologies I work with</p>
+      </div>
+      <a href="#projects" class="btn-view">
+        View My Projects
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon html">H</div>
+          <div class="skill-name">HTML</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div>
+        <div class="progress-pct">95%</div>
+        <p class="skill-desc">Semantic markup and accessibility focused.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon css">C</div>
+          <div class="skill-name">CSS</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div>
+        <div class="progress-pct">90%</div>
+        <p class="skill-desc">Modern layouts, animations and responsive design.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon js">JS</div>
+          <div class="skill-name">JavaScript</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:92%"></div></div>
+        <div class="progress-pct">92%</div>
+        <p class="skill-desc">ES6+, DOM manipulation and asynchronous programming.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon ts">TS</div>
+          <div class="skill-name">TypeScript</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+        <div class="progress-pct">85%</div>
+        <p class="skill-desc">Typed JavaScript for scalable and reliable applications.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon react">⚛</div>
+          <div class="skill-name">React</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div>
+        <div class="progress-pct">90%</div>
+        <p class="skill-desc">Building interactive UIs with components and hooks.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon next">N</div>
+          <div class="skill-name">Next.js</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+        <div class="progress-pct">80%</div>
+        <p class="skill-desc">Server-side rendering and modern web applications.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon python">Py</div>
+          <div class="skill-name">Python</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+        <div class="progress-pct">85%</div>
+        <p class="skill-desc">Core Python, OOP, scripts and problem solving.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon django">dj</div>
+          <div class="skill-name">Django</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
+        <div class="progress-pct">75%</div>
+        <p class="skill-desc">Building secure and scalable backend applications.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS & TECHNOLOGIES -->
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <div class="section-title-wrap">
+          <span class="dot"></span>
+          <h2 class="section-title">Tools & Technologies</h2>
+        </div>
+        <p class="section-subtitle">— Platforms and tools I use</p>
+      </div>
+    </div>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon" style="background:#f05032;color:white;">⌥</div>
+        <span class="tool-name">Git</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon" style="background:#333;color:white;">🐙</div>
+        <span class="tool-name">GitHub</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon" style="background:#007acc;color:white;">VS</div>
+        <span class="tool-name">VS Code</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon" style="background:#a259ff;color:white;">F</div>
+        <span class="tool-name">Figma</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon" style="background:#ff6c37;color:white;">P</div>
+        <span class="tool-name">Postman</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon" style="background:#2496ed;color:white;">🐳</div>
+        <span class="tool-name">Docker</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon" style="background:#47a248;color:white;">🍃</div>
+        <span class="tool-name">MongoDB</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon" style="background:#00758f;color:white;">🐬</div>
+        <span class="tool-name">MySQL</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTHER SKILLS -->
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <div class="section-title-wrap">
+          <span class="dot"></span>
+          <h2 class="section-title">Other Skills</h2>
+        </div>
+        <p class="section-subtitle">— Additional skills and expertise</p>
+      </div>
+    </div>
+
+    <div class="other-grid">
+      <div class="other-card">
+        <div class="other-icon ui">✦</div>
+        <div class="other-title">UI/UX Design</div>
+        <ul class="other-list">
+          <li>Wireframing</li>
+          <li>Prototyping</li>
+          <li>User Research</li>
+        </ul>
+      </div>
+      <div class="other-card">
+        <div class="other-icon responsive">📱</div>
+        <div class="other-title">Responsive Design</div>
+        <ul class="other-list">
+          <li>Mobile First</li>
+          <li>Cross Browser</li>
+          <li>Tailwind CSS</li>
+        </ul>
+      </div>
+      <div class="other-card">
+        <div class="other-icon problem">💡</div>
+        <div class="other-title">Problem Solving</div>
+        <ul class="other-list">
+          <li>Data Structures</li>
+          <li>Algorithms</li>
+          <li>Logical Thinking</li>
+        </ul>
+      </div>
+      <div class="other-card">
+        <div class="other-icon version">⎇</div>
+        <div class="other-title">Version Control</div>
+        <ul class="other-list">
+          <li>Git & GitHub</li>
+          <li>Branching</li>
+          <li>Collaboration</li>
+        </ul>
+      </div>
+      <div class="other-card">
+        <div class="other-icon soft">👥</div>
+        <div class="other-title">Soft Skills</div>
+        <ul class="other-list">
+          <li>Communication</li>
+          <li>Teamwork</li>
+          <li>Time Management</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRENTLY LEARNING -->
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <div class="section-title-wrap">
+          <span class="dot"></span>
+          <h2 class="section-title">Currently Learning</h2>
+        </div>
+        <p class="section-subtitle">— Technologies I'm exploring</p>
+      </div>
+    </div>
+
+    <div class="learning-grid">
+      <div class="learning-badge"><span class="icon">🟢</span> Node.js</div>
+      <div class="learning-badge"><span class="icon">⚡</span> Express.js</div>
+      <div class="learning-badge"><span class="icon">🐘</span> PostgreSQL</div>
+      <div class="learning-badge"><span class="icon">🌊</span> Tailwind CSS</div>
+      <div class="learning-badge"><span class="icon">◇</span> Prisma</div>
+      <div class="learning-badge"><span class="icon">☁️</span> AWS</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-inner">
+      <div class="cta-left">
+        <div class="cta-icon">🚀</div>
+        <div>
+          <h2>Let's build something amazing together</h2>
+          <p>I'm always excited to take on new challenges and create impactful digital experiences.</p>
+        </div>
+      </div>
+      <a href="#contact" class="btn-cta">
+        Get In Touch
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      <div class="footer-logo">Bbf-Onyx<span>&lt;/&gt;</span></div>
+    </div>
+    <div class="footer-socials">
+      <a href="#" aria-label="GitHub">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+       <a href="https://www.instagram.com/bbfonyx?igsi=aXNtZGpsY3hxa211" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2m-.3 2C5.3 4 4 5.3 4 7.5v9c0 2.2 1.3 3.5 3.5 3.5h9c2.2 0 3.5-1.3 3.5-3.5v-9c0-2.2-1.3-3.5-3.5-3.5h-9m9.6 1.5a1.5 1.5 0 0 1 0 3 1.5 1.5 0 0 1 0-3m-5.1 1.5c2.5 0 4.5 2 4.5 4.5s-2 4.5-4.5 4.5-4.5-2-4.5-4.5 2-4.5 4.5-4.5m0 2a2.5 2.5 0 0 0 0 5 2.5 2.5 0 0 0 0-5z"/>
+    </svg>
+  </a>
+       <a href="https://www.tiktok.com/@bbf.onyx3?_r=1&_t=ZS-999uwclhoOb" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.68v12.7a2.85 2.85 0 1 1-5.92-2.86c.44-.46 1.06-.75 1.75-.75V9.02a6 6 0 1 0 10.86 4.43v-5.02a8.05 8.05 0 0 0 4.76-2.74v-3.72z"/>
+    </svg>
+  </a>
+    </div>
+    <span>© 2026 Onyx. All rights reserved.</span>
+    <a href="#" class="back-top" aria-label="Back to top">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+    </a>
+  </footer>
+
+</body>
+</html>
